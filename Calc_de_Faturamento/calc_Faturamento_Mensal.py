@@ -17,7 +17,7 @@ def calcula_faturamento(arquivo_json):
     # Percorre os dados do faturamento diário
     for registro in dados:
         # Converte a data do registro para um objeto datetime
-        data = datetime.strptime(registro['data'], '%d-%m-%Y')
+        data = datetime.strptime(registro['data'], '%Y-%m-%d')
 
         # Desconsidera dias sem faturamento (sábados e domingos)
         if data.weekday() >= 5:
@@ -46,11 +46,13 @@ def calcula_faturamento(arquivo_json):
             dias_acima_da_media += 1
 
     # Retorna os resultados
-    return menor, maior, dias_acima_da_media
+    return menor, maior, dias_acima_da_media, dias_com_faturamento
 
 
-menor, maior, dias_acima_da_media = calcula_faturamento("faturamento.json")
-print("Menor valor de faturamento diário:", menor)
-print("Maior valor de faturamento diário:", maior)
-print("Número de dias com faturamento diário acima da média mensal:",
-      dias_acima_da_media)
+menor, maior, dias_acima_da_media, dias_com_faturamento = calcula_faturamento(
+    "faturamento.json")
+print("Menor valor de faturamento diário: R${:.2f}".format(menor))
+print("Maior valor de faturamento diário: R${:.2f}".format(maior))
+print("numero de dias com Faturamento: {}".format(dias_com_faturamento))
+print("Número de dias com faturamento diário acima da média mensal: {}".format(
+    dias_acima_da_media))
