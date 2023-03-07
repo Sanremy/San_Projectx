@@ -50,7 +50,7 @@ def calcula_faturamento(arquivo_json):
 
 
 menor, maior, dias_acima_da_media, dias_com_faturamento = calcula_faturamento(
-    "faturamento.json")
+    "Calc_de_Faturamento/faturamento.json")
 print("Menor valor de faturamento diário: R${:.2f}".format(menor))
 print("Maior valor de faturamento diário: R${:.2f}".format(maior))
 print("numero de dias com Faturamento: {}".format(dias_com_faturamento))
